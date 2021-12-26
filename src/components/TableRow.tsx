@@ -1,22 +1,23 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useAppDispatch } from '../app/hooks';
+import {
+  removeItemFromList,
+  updateMissing,
+} from '../reducers/inventoryReducer';
 import { Equipment } from '../types/equipment';
 
 const TableRow = ({ item, i }: { item: Equipment; i: number }) => {
   const [currentQuantity, setCurrentQuantity] = useState(0);
-
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const removeItem = (index: number) => {
-    dispatch({ type: 'REMOVE_ITEM', payload: index });
+    dispatch(removeItemFromList(index));
   };
+
   useEffect(() => {
-    dispatch({
-      type: 'UPDATE_MISSING',
-      index: i,
-      missing: item.fullQuantity - currentQuantity,
-    });
+    dispatch(
+      updateMissing({ index: i, missing: item.fullQuantity - currentQuantity })
+    );
   }, [currentQuantity]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

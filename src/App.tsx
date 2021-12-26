@@ -1,13 +1,15 @@
 import WorkerPage from './pages/WorkerPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import InventoryList from './pages/InventoryPage';
+import InventoryPage from './pages/InventoryPage';
+import SubmitPage from './pages/SubmitPage';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<WorkerPage />} />
-        <Route path="/inventory" element={<InventoryList />} />
+        <Route path="/inventory" element={<InventoryPage />} />
+        <Route path="/submit" element={<SubmitPage />} />
       </Routes>
     </BrowserRouter>
   );

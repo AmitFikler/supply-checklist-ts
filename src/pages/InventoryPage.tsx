@@ -1,34 +1,21 @@
-import { useAppSelector } from '../app/hooks';
-import { Equipment } from '../types/equipment';
-import TableRow from './TableRow';
+import { useNavigate } from 'react-router';
+import AddItem from '../components/AddItem';
+import InventoryList from '../components/InvetoryList';
 
-const InventoryList = () => {
-  const fullEquipmentList = useAppSelector((state) => state.inventory);
-  const worker = useAppSelector((state) => state.worker);
+function InventoryPage() {
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    navigate('/submit');
+  };
   return (
-    <div>
-      <h1>Hello {worker.fullName}!</h1>
-      <h3>Please check the equipment before entering the shift.</h3>
-      <div className="table-div">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Item's name</th>
-              <th>Full quantity</th>
-              <th>Current quantity</th>
-              <th>Missing</th>
-            </tr>
-          </thead>
-          <tbody>
-            {fullEquipmentList.map((item: Equipment, i) => {
-              return [<TableRow item={item} i={i} key={i} />];
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <>
+      <InventoryList />
+      <AddItem />
+      <button className="submit-form" onClick={handleSubmit}>
+        Submit
+      </button>
+    </>
   );
-};
+}
 
-export default InventoryList;
+export default InventoryPage;
