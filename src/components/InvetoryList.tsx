@@ -6,8 +6,6 @@ const InventoryList = () => {
   const fullEquipmentList = useAppSelector((state) => state.inventory);
   const worker = useAppSelector((state) => state.worker);
 
-  console.log(fullEquipmentList);
-
   return (
     <div>
       <h1>Hello {worker.fullName}!</h1>

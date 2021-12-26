@@ -18,6 +18,7 @@ const TableRow = ({ item, i }: { item: Equipment; i: number }) => {
     dispatch(
       updateMissing({ index: i, missing: item.fullQuantity - currentQuantity })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentQuantity]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
