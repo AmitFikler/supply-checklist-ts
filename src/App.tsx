@@ -1,8 +1,15 @@
+import WorkerPage from './pages/WorkerPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import InventoryList from './pages/InventoryPage';
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello world</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<WorkerPage />} />
+        <Route path="/inventory" element={<InventoryList />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

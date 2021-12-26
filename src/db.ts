@@ -19,7 +19,7 @@ const fullEquipmentList: Equipment[] = [
   },
   {
     name: 'Cervical-collar',
-    fullQuantity: 4,
+    fullQuantity: 2,
   },
   {
     name: 'Medication-bag',
