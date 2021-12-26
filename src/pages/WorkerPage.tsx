@@ -1,26 +1,21 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
+import { useAppDispatch } from '../app/hooks';
+import { entryWorker } from '../reducers/workerReducer';
 
 const WorkerPage = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [fullName, setFullName] = useState('');
   const [workplace, setWorkplace] = useState('');
   const [date, setDate] = useState('');
 
   const navigate = useNavigate();
-  const state = useSelector((state) => state);
-  console.log(state);
 
   const submitForm = () => {
-    console.log({ fullName, workplace, date });
     if (!fullName || !workplace || !date) {
       return;
     }
-    dispatch({
-      type: 'ENTRY_WORKER',
-      payload: { fullName, workplace, date },
-    });
+    dispatch(entryWorker({ fullName, workplace, date }));
     navigate('/inventory');
   };
 

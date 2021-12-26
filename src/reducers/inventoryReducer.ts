@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Equipment, MissingType } from '../types/equipment';
+import { Equipment } from '../types/equipment';
 import fullEquipmentList from '../db';
 
 const initialState = [...fullEquipmentList];
